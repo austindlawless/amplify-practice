@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-import { Lead } from 'bootstrap-4-react';
-import { Authenticator } from 'aws-amplify-react';
+import { Lead, BSpan } from 'bootstrap-4-react';
+import { Authenticator, SignIn } from 'aws-amplify-react';
+
+import JSignIn from '../components/auth/JSignIn';
+
+const CustomAuthenticator = props => (
+    <Authenticator hide={[SignIn]}>
+        <JSignIn />
+    </Authenticator>
+);
 
 export default class Login extends Component {
     render() {
@@ -8,8 +16,9 @@ export default class Login extends Component {
 
         return (
             <React.Fragment>
-                { !user && <Authenticator /> }
-                { user && <Lead>You are signed in as <span className="font-italic">{user.username}</span>.</Lead> }
+                { !user && <CustomAuthenticator /> }
+                { user && <Lead>You are signed in as <BSpan font="italic">{user.username}</BSpan>.</Lead> }
+
             </React.Fragment>
         )
     }
