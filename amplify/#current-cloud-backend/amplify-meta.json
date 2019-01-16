@@ -1,0 +1,32 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "journal-20190116121939-authRole",
+			"UnauthRoleArn": "arn:aws:iam::815265081300:role/journal-20190116121939-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::815265081300:role/journal-20190116121939-authRole",
+			"Region": "us-west-2",
+			"DeploymentBucketName": "journal-20190116121939-deployment",
+			"UnauthRoleName": "journal-20190116121939-unauthRole",
+			"StackName": "journal-20190116121939",
+			"StackId": "arn:aws:cloudformation:us-west-2:815265081300:stack/journal-20190116121939/49d18f40-19bb-11e9-a085-0a44a01d32f4"
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/journal-20190116121939-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2019-01-16T18:21:43.292Z",
+			"output": {
+				"S3BucketSecureURL": "https://journal-20190116122023-hostingbucket.s3.amazonaws.com",
+				"WebsiteURL": "http://journal-20190116122023-hostingbucket.s3-website-us-west-2.amazonaws.com",
+				"Region": "us-west-2",
+				"HostingBucketName": "journal-20190116122023-hostingbucket"
+			},
+			"lastPushDirHash": "fLzKwH4GtLDAP0/j953dA/M1mJI="
+		}
+	}
+}

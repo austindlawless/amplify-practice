@@ -1,0 +1,20 @@
+{
+    "projectName": "journal",
+    "projectPath": "/Users/austinlawless/dev/poc/amplify/journal",
+    "defaultEditor": "idea14ce",
+    "frontendHandler": {
+        "javascript": "/Users/austinlawless/.nvm/versions/node/v8.11.4/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
+    },
+    "javascript": {
+        "framework": "react",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "build",
+            "BuildCommand": "yarn build",
+            "StartCommand": "yarn start"
+        }
+    },
+    "providers": {
+        "awscloudformation": "/Users/austinlawless/.nvm/versions/node/v8.11.4/lib/node_modules/@aws-amplify/cli/node_modules/amplify-provider-awscloudformation"
+    }
+}

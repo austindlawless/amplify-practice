@@ -1,0 +1,58 @@
+{
+	"projectPath": "/Users/austinlawless/dev/poc/amplify/journal",
+	"backupAWSMobileJSDirPath": "/Users/austinlawless/dev/poc/amplify/journal/~awsmobilejs-2019-01-16-12-01-31",
+	"projectInfo": {
+		"ProjectName": "journal",
+		"ProjectPath": "/Users/austinlawless/dev/poc/amplify/journal",
+		"InitializationTime": "",
+		"LastConfigurationTime": "",
+		"LastNPMInstallTime": "",
+		"FrontendLastBuildTime": "",
+		"LastPublishTime": "",
+		"BackendLastSyncTime": "",
+		"BackendLastBuildTime": "",
+		"BackendLastPushTime": "",
+		"BackendProjectID": "",
+		"BackendProjectName": "",
+		"BackendProjectConsoleUrl": "",
+		"BackendProjectCreationTime": "",
+		"BackendProjectLastUpdatedTime": "",
+		"Framework": "react"
+	},
+	"projectConfig": {
+		"SourceDir": "src",
+		"DistributionDir": "build",
+		"BuildCommand": "yarn build",
+		"StartCommand": "yarn start"
+	},
+	"packageJson": {
+		"name": "journal",
+		"version": "0.1.0",
+		"private": true,
+		"dependencies": {
+			"bootstrap-4-react": "^0.0.57",
+			"react": "^16.7.0",
+			"react-dom": "^16.7.0",
+			"react-router-dom": "^4.3.1",
+			"react-scripts": "2.1.3"
+		},
+		"scripts": {
+			"start": "react-scripts start",
+			"build": "react-scripts build",
+			"test": "react-scripts test",
+			"eject": "react-scripts eject"
+		},
+		"eslintConfig": {
+			"extends": "react-app"
+		},
+		"browserslist": [
+			">0.2%",
+			"not dead",
+			"not ie <= 11",
+			"not op_mini all"
+		]
+	},
+	"framework": "react",
+	"initialStage": "invalid",
+	"strategy": "create"
+}
