@@ -1,0 +1,9 @@
+{
+    "bucketName": "journalc74c2a71f9444cefbf81e6d9c88fcd46",
+    "authPolicyName": "s3_amplify_f1d937a6",
+    "unauthPolicyName": "s3_amplify_f1d937a6",
+    "authRoleName": "journal-20190116121939-authRole",
+    "unauthRoleName": "journal-20190116121939-unauthRole",
+    "authPermissions": "rw",
+    "unauthPermissions": "r"
+}

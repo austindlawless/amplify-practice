@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export default class Home extends Component {
+import { Authenticator } from 'aws-amplify-react';
+
+export default class Login extends Component {
     render() {
-        return (
-            <h1>Login</h1>
-        )
+        return <Authenticator />
     }
 }

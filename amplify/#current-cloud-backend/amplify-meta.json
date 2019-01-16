@@ -19,7 +19,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/journal-20190116121939-deployment/amplify-cfn-templates/hosting/template.json",
 				"logicalId": "hostingS3AndCloudFront"
 			},
-			"lastPushTimeStamp": "2019-01-16T18:21:43.292Z",
+			"lastPushTimeStamp": "2019-01-16T18:52:40.783Z",
 			"output": {
 				"S3BucketSecureURL": "https://journal-20190116122023-hostingbucket.s3.amazonaws.com",
 				"WebsiteURL": "http://journal-20190116122023-hostingbucket.s3-website-us-west-2.amazonaws.com",
@@ -27,6 +27,43 @@
 				"HostingBucketName": "journal-20190116122023-hostingbucket"
 			},
 			"lastPushDirHash": "fLzKwH4GtLDAP0/j953dA/M1mJI="
+		}
+	},
+	"auth": {
+		"cognito04375d33": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/journal-20190116121939-deployment/amplify-cfn-templates/auth/cognito04375d33-cloudformation-template.yml",
+				"logicalId": "authcognito04375d33"
+			},
+			"lastPushTimeStamp": "2019-01-16T18:52:40.787Z",
+			"output": {
+				"AppClientSecret": "9207ufcljovi012o89ujp6hakr7r8c1uhfdospo71qi9khe9atl",
+				"UserPoolId": "us-west-2_bQ42H7gQh",
+				"AppClientIDWeb": "17aoc8gn389tqeh8m7mif2tgf7",
+				"AppClientID": "4trgul0d8i9kusjoei1o3l74st",
+				"IdentityPoolId": "us-west-2:527934e1-d882-4eac-ab1c-2ad97670e3e2",
+				"IdentityPoolName": "cognito04375d33_identitypool_04375d33",
+				"UserPoolName": "cognito04375d33_userpool_04375d33"
+			},
+			"lastPushDirHash": "3PQxv0WNXsIafDG3H2sXrfOUJa4="
+		}
+	},
+	"storage": {
+		"s3f1d937a6": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/journal-20190116121939-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"logicalId": "storages3f1d937a6"
+			},
+			"lastPushTimeStamp": "2019-01-16T18:52:40.787Z",
+			"output": {
+				"BucketName": "journalc74c2a71f9444cefbf81e6d9c88fcd46",
+				"Region": "us-west-2"
+			},
+			"lastPushDirHash": "0O1HcXRv/7JsosvdTwCrvesxF2c="
 		}
 	}
 }

@@ -84,6 +84,71 @@
 				"TemplateURL": "https://s3.amazonaws.com/journal-20190116121939-deployment/amplify-cfn-templates/hosting/template.json",
 				"Parameters": {}
 			}
+		},
+		"authcognito04375d33": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/journal-20190116121939-deployment/amplify-cfn-templates/auth/cognito04375d33-cloudformation-template.yml",
+				"Parameters": {
+					"identityPoolName": "cognito04375d33_identitypool_04375d33",
+					"allowUnauthenticatedIdentities": true,
+					"thirdPartyAuth": false,
+					"lambdaLogPolicy": "cognito04375d33_lambda_log_policy",
+					"openIdLambdaRoleName": "cognito04375d33_openid_lambda_role",
+					"openIdRolePolicy": "cognito04375d33_openid_pass_role_policy",
+					"openIdLambdaIAMPolicy": "cognito04375d33_openid_lambda_iam_policy",
+					"openIdLogPolicy": "cognito04375d33_openid_lambda_log_policy",
+					"userPoolName": "cognito04375d33_userpool_04375d33",
+					"autoVerifiedAttributes": "email",
+					"mfaConfiguration": "OFF",
+					"mfaTypes": "SMS Text Message",
+					"roleName": "cognito04375d33_sns-role",
+					"roleExternalId": "cognito04375d33_role_external_id",
+					"policyName": "cognito04375d33-sns-policy",
+					"smsAuthenticationMessage": "Your authentication code is {####}",
+					"smsVerificationMessage": "Your verification code is {####}",
+					"emailVerificationSubject": "Your verification code",
+					"emailVerificationMessage": "Your verification code is {####}",
+					"defaultPasswordPolicy": false,
+					"passwordPolicyMinLength": 8,
+					"passwordPolicyCharacters": "Requires Lowercase,Requires Uppercase,Requires Numbers,Requires Symbols",
+					"requiredAttributes": "email",
+					"userpoolClientName": "cognito04375d33_app_client",
+					"userpoolClientGenerateSecret": true,
+					"userpoolClientRefreshTokenValidity": 30,
+					"userpoolClientReadAttributes": "email",
+					"mfaLambdaRole": "cognito04375d33_totp_lambda_role",
+					"mfaLambdaLogPolicy": "cognito04375d33_totp_lambda_log_policy",
+					"mfaPassRolePolicy": "cognito04375d33_totp_pass_role_policy",
+					"mfaLambdaIAMPolicy": "cognito04375d33_totp_lambda_iam_policy",
+					"userpoolClientLambdaRole": "cognito04375d33_userpoolclient_lambda_role",
+					"userpoolClientLogPolicy": "cognito04375d33_userpoolclient_lambda_log_policy",
+					"userpoolClientLambdaPolicy": "cognito04375d33_userpoolclient_lambda_iam_policy",
+					"userpoolClientSetAttributes": false,
+					"useDefault": "default",
+					"unAuthRoleName": "journal-20190116121939-unauthRole",
+					"authRoleName": "journal-20190116121939-authRole",
+					"unAuthRoleArn": "arn:aws:iam::815265081300:role/journal-20190116121939-unauthRole",
+					"authRoleArn": "arn:aws:iam::815265081300:role/journal-20190116121939-authRole",
+					"resourceName": "cognito04375d33",
+					"authSelections": "identityPoolAndUserPool"
+				}
+			}
+		},
+		"storages3f1d937a6": {
+			"Type": "AWS::CloudFormation::Stack",
+			"Properties": {
+				"TemplateURL": "https://s3.amazonaws.com/journal-20190116121939-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"Parameters": {
+					"bucketName": "journalc74c2a71f9444cefbf81e6d9c88fcd46",
+					"authPolicyName": "s3_amplify_f1d937a6",
+					"unauthPolicyName": "s3_amplify_f1d937a6",
+					"authRoleName": "journal-20190116121939-authRole",
+					"unauthRoleName": "journal-20190116121939-unauthRole",
+					"authPermissions": "rw",
+					"unauthPermissions": "r"
+				}
+			}
 		}
 	},
 	"Outputs": {
