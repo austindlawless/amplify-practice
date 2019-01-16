@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {BSpan, Nav, Navbar} from 'bootstrap-4-react';
 import {HashRouter, Route, Switch} from 'react-router-dom';
 import {SignOut} from 'aws-amplify-react';
+import {Auth, Hub} from 'aws-amplify';
 
 const HomeItems = props => (
     <React.Fragment>
@@ -28,7 +29,34 @@ const LoginItems = props => (
 );
 
 export default class Navigator extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.loadUser = this.loadUser.bind(this);
+
+        Hub.listen('auth', this, 'navigator'); // Add this component as listener of auth event.
+
+        this.state = {user: null}
+    }
+
+    componentDidMount() {
+        this.loadUser(); // The first check
+    }
+
+    loadUser() {
+        Auth.currentAuthenticatedUser()
+            .then(user => this.setState({user: user}))
+            .catch(err => this.setState({user: null}));
+    }
+
+    onHubCapsule(capsule) {
+        this.loadUser(); // Triggered every time user sign in / out
+    }
+
     render() {
+        const {user} = this.state;
+
         return (
             <Navbar expand="md" dark bg="dark" fixed="top">
                 <Navbar.Brand href="#">Journal</Navbar.Brand>
@@ -43,7 +71,8 @@ export default class Navigator extends Component {
                             </Switch>
                         </HashRouter>
                     </Navbar.Nav>
-                    <Navbar.Text>Greetings</Navbar.Text>
+                    {user && <Navbar.Text>Hi {user.username}</Navbar.Text>}
+                    {!user && <Navbar.Text>Greetings</Navbar.Text>}
                     <SignOut/>d
                 </Navbar.Collapse>
             </Navbar>
