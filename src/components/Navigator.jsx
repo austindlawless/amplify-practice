@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {BSpan, Nav, Navbar} from 'bootstrap-4-react';
 import {HashRouter, Route, Switch} from 'react-router-dom';
-import {SignOut} from 'aws-amplify-react';
 import {Auth, Hub} from 'aws-amplify';
+import JSignOut from './auth/JSignOut';
 
 const HomeItems = props => (
     <React.Fragment>
@@ -73,7 +73,7 @@ export default class Navigator extends Component {
                     </Navbar.Nav>
                     {user && <Navbar.Text>Hi {user.username}</Navbar.Text>}
                     {!user && <Navbar.Text>Greetings</Navbar.Text>}
-                    <SignOut/>d
+                    {user && <JSignOut/>}
                 </Navbar.Collapse>
             </Navbar>
         )
