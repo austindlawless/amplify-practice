@@ -73,7 +73,7 @@ export default class Navigator extends Component {
                     </Navbar.Nav>
                     {user && <Navbar.Text>Hi {user.username}</Navbar.Text>}
                     {!user && <Navbar.Text>Greetings</Navbar.Text>}
-                    <SignOut/>d
+                    <SignOut/>
                 </Navbar.Collapse>
             </Navbar>
         )
