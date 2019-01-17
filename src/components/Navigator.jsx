@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {BSpan, Nav, Navbar} from 'bootstrap-4-react';
 import {HashRouter, Route, Switch} from 'react-router-dom';
-import {Auth, Hub, Logger} from 'aws-amplify';
+import {Logger} from 'aws-amplify';
+
+import store from '../store';
 import {JSignOut} from './auth';
 
 const HomeItems = props => (
@@ -41,10 +43,10 @@ const ProfileItems = props => (
         </Nav.ItemLink>
         <Nav.ItemLink href="#/profile" active>
             Profile
+            <BSpan srOnly>(current}</BSpan>
         </Nav.ItemLink>
         <Nav.ItemLink href="#/login">
             Login
-            <BSpan srOnly>(current}</BSpan>
         </Nav.ItemLink>
     </React.Fragment>
 );
@@ -55,30 +57,28 @@ export default class Navigator extends Component {
     constructor(props) {
         super(props);
 
-        this.loadUser = this.loadUser.bind(this);
+        this.storeListener = this.storeListener.bind(this);
 
-        Hub.listen('auth', this, 'navigator'); // Add this component as a listener of auth events.
-
-        this.state = {user: null}
+        this.state = {user: null, profile: null}
     }
 
     componentDidMount() {
-        this.loadUser(); // The first check
+        this.unsubscribeStore = store.subscribe(this.storeListener);
     }
 
-    onHubCapsule(capsule) {
-        logger.info('on Auth event', capsule);
-        this.loadUser(); // Triggered every time user sign in / out.
+    componentWillUnmount() {
+        this.unsubscribeStore();
     }
 
-    loadUser() {
-        Auth.currentAuthenticatedUser()
-            .then(user => this.setState({user: user}))
-            .catch(err => this.setState({user: null}));
+    storeListener() {
+        logger.info('redux notification');
+        const state = store.getState();
+        this.setState({user: state.user, profile: state.profile});
     }
 
     render() {
         const {user} = this.state;
+        const profile = this.state.profile || {};
 
         return (
             <Navbar expand="md" dark bg="dark" fixed="top">
@@ -96,7 +96,7 @@ export default class Navigator extends Component {
                         </HashRouter>
                     </Navbar.Nav>
                     <Navbar.Text mr="2">
-                        {user ? 'Hi ' + user.username : 'Please sign in'}
+                        {user ? 'Hi ' + (profile.given_name || user.username) : 'Please sign in'}
                     </Navbar.Text>
                     {user && <JSignOut/>}
                 </Navbar.Collapse>

@@ -20,7 +20,7 @@ const CustomAuthenticator = props => (
         <JForgotPassword/>
         <JForgotPasswordReset/>
     </Authenticator>
-)
+);
 
 export default class Login extends Component {
     render() {
