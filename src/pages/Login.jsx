@@ -1,24 +1,35 @@
-import React, { Component } from 'react';
-import { Lead, BSpan } from 'bootstrap-4-react';
-import { Authenticator, SignIn } from 'aws-amplify-react';
+import React, {Component} from 'react';
+import {BSpan, Lead} from 'bootstrap-4-react';
+import {Authenticator} from 'aws-amplify-react';
 
-import JSignIn from '../components/auth/JSignIn';
+import {
+    JConfirmSignIn,
+    JConfirmSignUp,
+    JForgotPassword,
+    JForgotPasswordReset,
+    JSignIn,
+    JSignUp
+} from '../components/auth';
 
 const CustomAuthenticator = props => (
-    <Authenticator hide={[SignIn]}>
-        <JSignIn />
+    <Authenticator hideDefault>
+        <JSignIn/>
+        <JConfirmSignIn/>
+        <JSignUp/>
+        <JConfirmSignUp/>
+        <JForgotPassword/>
+        <JForgotPasswordReset/>
     </Authenticator>
-);
+)
 
 export default class Login extends Component {
     render() {
-        const { user } = this.props;
+        const {user} = this.props;
 
         return (
             <React.Fragment>
-                { !user && <CustomAuthenticator /> }
-                { user && <Lead>You are signed in as <BSpan font="italic">{user.username}</BSpan>.</Lead> }
-
+                {!user && <CustomAuthenticator/>}
+                {user && <Lead>You are signed in as <BSpan font="italic">{user.username}</BSpan>.</Lead>}
             </React.Fragment>
         )
     }

@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import { Button } from 'bootstrap-4-react';
-import { Auth } from 'aws-amplify';
+import React, {Component} from 'react';
+import {Button} from 'bootstrap-4-react';
+import {Auth, Logger} from 'aws-amplify';
+
+const logger = new Logger('JSignOut');
 
 export default class JSignOut extends Component {
     constructor(props) {
@@ -9,12 +11,23 @@ export default class JSignOut extends Component {
     }
 
     signOut() {
-        Auth.signOut();
+        Auth.signOut()
+            .then(() => logger.info('sign out success'))
+            .catch(err => logger.info('sign out error', err));
     }
 
     render() {
         return (
-            <Button light outline sm border="0" onClick={this.signOut}>Sign Out</Button>
+            <Button
+                light
+                outline
+                sm
+                border="0"
+                style={{textDecoration: 'underline'}}
+                onClick={this.signOut}
+            >
+                Sign Out
+            </Button>
         )
     }
 }

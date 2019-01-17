@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {BSpan, Nav, Navbar} from 'bootstrap-4-react';
 import {HashRouter, Route, Switch} from 'react-router-dom';
-import {Auth, Hub} from 'aws-amplify';
-import JSignOut from './auth/JSignOut';
+import {Auth, Hub, Logger} from 'aws-amplify';
+import {JSignOut} from './auth';
 
 const HomeItems = props => (
     <React.Fragment>
@@ -28,14 +28,15 @@ const LoginItems = props => (
     </React.Fragment>
 );
 
-export default class Navigator extends Component {
+const logger = new Logger('Navigator');
 
+export default class Navigator extends Component {
     constructor(props) {
         super(props);
 
         this.loadUser = this.loadUser.bind(this);
 
-        Hub.listen('auth', this, 'navigator'); // Add this component as listener of auth event.
+        Hub.listen('auth', this, 'navigator'); // Add this component as a listener of auth events.
 
         this.state = {user: null}
     }
@@ -44,14 +45,15 @@ export default class Navigator extends Component {
         this.loadUser(); // The first check
     }
 
+    onHubCapsule(capsule) {
+        logger.info('on Auth event', capsule);
+        this.loadUser(); // Triggered every time user sign in / out.
+    }
+
     loadUser() {
         Auth.currentAuthenticatedUser()
             .then(user => this.setState({user: user}))
             .catch(err => this.setState({user: null}));
-    }
-
-    onHubCapsule(capsule) {
-        this.loadUser(); // Triggered every time user sign in / out
     }
 
     render() {
@@ -71,8 +73,9 @@ export default class Navigator extends Component {
                             </Switch>
                         </HashRouter>
                     </Navbar.Nav>
-                    {user && <Navbar.Text>Hi {user.username}</Navbar.Text>}
-                    {!user && <Navbar.Text>Greetings</Navbar.Text>}
+                    <Navbar.Text mr="2">
+                        {user ? 'Hi ' + user.username : 'Please sign in'}
+                    </Navbar.Text>
                     {user && <JSignOut/>}
                 </Navbar.Collapse>
             </Navbar>

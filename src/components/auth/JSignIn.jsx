@@ -101,6 +101,12 @@ export default class JSignIn extends Component {
                         style={style.input}
                     />
                     <Row my="2" style={style.links}>
+                        <Col text="left">
+                            New to us?{' '}
+                            <BA href="#" preventDefault onClick={() => this.changeState('signUp')}>
+                                Sign up
+                            </BA>
+                        </Col>
                         <Col text="right">
                             <BA href="#" preventDefault onClick={() => this.changeState('forgotPassword')}>
                                 Forgot password
